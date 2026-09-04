@@ -26,9 +26,11 @@ Return recipe suggestions and eventually the recipe instructions to the user, if
 """
 
 from langchain.agents import create_agent
+from langchain_openrouter import ChatOpenRouter
+model = ChatOpenRouter(model="openai/gpt-5-nano")   # or anthropic/claude-3.5-haiku, etc.
 
 agent = create_agent(
-    model="gpt-5-nano",
+    model=model,
     tools=[web_search],
     system_prompt=system_prompt
 )
